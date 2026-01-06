@@ -13,6 +13,7 @@ const config: Config = {
           500: "#4f46e5",
           600: "#4338ca",
         },
+        fontFamily: { vazir: ["Vazirmatn", "sans-serif"] },
       },
     },
   },

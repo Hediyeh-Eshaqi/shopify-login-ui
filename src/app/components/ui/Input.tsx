@@ -25,9 +25,10 @@ export function Input({
         {label}
       </label>
       <input
+        style={{ direction: "ltr" }}
         id={inputId}
         className={clsx(
-          "block w-full rounded-(--radius) border border-gray-700 px-3 py-2 text-sm shadow-sm focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600",
+          "ltr block w-full rounded-(--radius) border border-gray-700 px-3 py-2 text-sm shadow-sm focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600",
           error && "border-red-500 focus:border-red-600 focus:ring-red-600",
           className
         )}

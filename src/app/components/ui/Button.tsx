@@ -57,7 +57,7 @@ export function Button({
       <span>{text ?? children}</span>
 
       {hoverIcon && (
-        <span className="ml-2 translate-x-0 group-hover:translate-x-1 transition-transform duration-300 shrink-0">
+        <span className="ml-2 translate-x-0 group-hover:-translate-x-1 transition-transform duration-300 shrink-0">
           {hoverIcon}
         </span>
       )}

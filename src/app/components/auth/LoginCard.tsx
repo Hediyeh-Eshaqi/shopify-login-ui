@@ -8,7 +8,7 @@ import { SocialButtons } from "./SocialButtons";
 import { FooterLinks } from "./FooterLinks";
 import { HelpLink } from "../ui/HelpLink";
 import { PassKeyIcon } from "../ui/Icon";
-import { ArrowRightIcon } from "lucide-react";
+import { ArrowLeftIcon } from "lucide-react";
 import ReCAPTCHA from "react-google-recaptcha";
 import Link from "next/link";
 
@@ -25,11 +25,11 @@ export function LoginCard() {
 
     const nextErrors: typeof errors = {};
 
-    if (!email) nextErrors.email = "Please enter your email";
+    if (!email) nextErrors.email = "لطفا ایمیل خود را وارد کنید";
     else if (!/^\S+@\S+\.\S+$/.test(email))
-      nextErrors.email = "Invalid email address";
+      nextErrors.email = "آدرس ایمیل معتبر نیست";
 
-    if (!captcha) nextErrors.captcha = "Captcha is required";
+    if (!captcha) nextErrors.captcha = "کد کپچا ضروری است";
 
     setErrors(nextErrors);
 
@@ -53,75 +53,78 @@ export function LoginCard() {
   };
 
   return (
-    <div className="w-full space-y-6 font-sans bg-white p-10 rounded-xl">
-      <Link href="/">
-        <Image
-          src="https://shopify-assets.shopifycdn.com/accounts/production/theme_configuration/logo/oauth_provider/merchant/logo.svg?v=1631025778"
-          alt="Log in to Shopify"
-          width={92}
-          height={40}
-          priority
-          className="w-23"
-        />
-      </Link>
-
-      <div className="flex mb-6 mt-6">
-        <div>
-          <h1 className="text-2xl font-semibold text-[#303030] mb-0.5">
-            Log in
-          </h1>
-          <h3 className="text-sm text-gray-600">Continue to Shopify</h3>
-        </div>
-      </div>
-
-      <form onSubmit={onSubmit} className="space-y-4" noValidate>
-        <Input
-          label="e-mail"
-          type="email"
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          error={errors.email}
-        />
-
-        <div>
-          <ReCAPTCHA
-            sitekey="This is a test"
-            onChange={(token) => setCaptcha(token || "")}
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="w-full md:w-120 space-y-6 bg-white p-10 rounded-xl">
+        <Link href="/">
+          <Image
+            src="https://shopify-assets.shopifycdn.com/accounts/production/theme_configuration/logo/oauth_provider/merchant/logo.svg?v=1631025778"
+            alt="Log in to Shopify"
+            width={92}
+            height={40}
+            priority
+            className="w-23"
           />
-          {errors.captcha && (
-            <p className="text-red-600 text-sm mt-1">{errors.captcha}</p>
-          )}
+        </Link>
+
+        <div className="flex mb-6 mt-6">
+          <div>
+            <h1 className="text-2xl font-semibold text-[#303030] mb-0.5">
+              ورود
+            </h1>
+            <h3 className="text-sm text-gray-600">ورود به شاپیفای</h3>
+          </div>
         </div>
+
+        <form onSubmit={onSubmit} className="space-y-4" noValidate>
+          <Input
+            label="ایمیل"
+            type="email"
+            placeholder=""
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            error={errors.email}
+          />
+
+          <div>
+            <ReCAPTCHA
+              sitekey="This is a test"
+              onChange={(token) => setCaptcha(token || "")}
+            />
+            {errors.captcha && (
+              <p className="text-red-600 text-sm mt-1">{errors.captcha}</p>
+            )}
+          </div>
+
+          <Button
+            size="lg"
+            fullWidth
+            text={loading ? "Loading..." : "با ایمیل ادامه دهید"}
+            disabled={loading}
+            hoverIcon={<ArrowLeftIcon />}
+          />
+        </form>
+
+        <Divider>or</Divider>
 
         <Button
-          size="lg"
+          disabled
           fullWidth
-          text={loading ? "Loading..." : "Continue via email"}
-          disabled={loading}
-          hoverIcon={<ArrowRightIcon />}
+          variant="secondary"
+          leftIcon={<PassKeyIcon />}
+          text="با کلید عبور وارد شوید"
+          className="justify-center gap-2 mb-4"
         />
-      </form>
 
-      <Divider>or</Divider>
+        <SocialButtons />
 
-      <Button
-        fullWidth
-        variant="secondary"
-        leftIcon={<PassKeyIcon />}
-        text="Log in with a passkey"
-        className="justify-center gap-2 mb-4"
-      />
+        <HelpLink
+          text="اکانت ندارید؟"
+          href="/signup"
+          linkText="همین حالا عضو شوید"
+        />
 
-      <SocialButtons />
-
-      <HelpLink
-        text="New to Shopify?"
-        href="/signup"
-        linkText="Start right away"
-      />
-
-      <FooterLinks />
+        <FooterLinks />
+      </div>
     </div>
   );
 }

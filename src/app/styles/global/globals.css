@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@import 'vazirmatn/Vazirmatn-font-face.css';
+
+body {
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+:root {
+  --radius: 0.5rem;
+}

@@ -1,9 +1,0 @@
-@import "tailwindcss";
-
-:root {
-  --radius: 0.5rem;
-}
-
-body {
-  @apply min-h-screen bg-linear-to-tr from-[#4b23a9] via-[#1b1a22] to-[#087e72];
-}

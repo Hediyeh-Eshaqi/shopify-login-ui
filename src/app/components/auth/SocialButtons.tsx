@@ -13,7 +13,7 @@ export function SocialButtons() {
         leftIcon={<AppleIcon className="h-6 w-6" />}
         className="justify-center gap-2 sm:flex-1"
       >
-        <span className="sm:hidden">Log in with Apple</span>
+        <span className="sm:hidden">ورود با اپل</span>
       </Button>
 
       <Button
@@ -23,7 +23,7 @@ export function SocialButtons() {
         leftIcon={<FacebookIcon className="h-6 w-6" />}
         className="justify-center gap-2 sm:flex-1"
       >
-        <span className="sm:hidden">Log in with Facebook</span>
+        <span className="sm:hidden">ورود با فیسبوک</span>
       </Button>
 
       <Button
@@ -33,7 +33,7 @@ export function SocialButtons() {
         leftIcon={<GoogleIcon className="h-6 w-6" />}
         className="justify-center gap-2 sm:flex-1"
       >
-        <span className="sm:hidden">Log in with Google</span>
+        <span className="sm:hidden">ورود با گوگل</span>
       </Button>
     </div>
   );
